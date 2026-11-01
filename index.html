@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mohammad Maaitah, AI/ML engineer: generative AI, RAG systems and machine learning." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='8' cy='16' r='4' fill='%23111827'/><circle cx='24' cy='8' r='4' fill='%236366F1'/><circle cx='24' cy='24' r='4' fill='%236366F1'/><path d='M8 16L24 8M8 16L24 24' stroke='%239ca3af' stroke-width='2'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500&family=Inter:wght@300;400;500&family=IBM+Plex+Sans+Arabic:wght@200;300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>Mohammad Maaitah · AI/ML Engineer</title>
+    <script>
+      // Apply the saved theme and language before first paint, so the page never flashes.
+      (function () {
+        var theme, lang
+        try {
+          theme = localStorage.getItem('theme')
+          lang = localStorage.getItem('lang')
+        } catch (e) {}
+        if (theme !== 'dark' && theme !== 'light')
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        var root = document.documentElement
+        root.dataset.theme = theme
+        if (lang === 'ar') {
+          root.lang = 'ar'
+          root.dir = 'rtl'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
