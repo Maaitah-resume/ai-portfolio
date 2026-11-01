@@ -105,7 +105,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* the section you're reading is marked in the nav */
 .nav nav a[aria-current] { color: var(--ink); background: rgba(79, 70, 229, .08); }
 .nav nav a.nav-cta { color: var(--on-ink); background: var(--ink); }
-@media (max-width: 720px) { .nav nav a:not(.nav-cta) { display: none; } }
 /* reading progress, driven by scroll where supported */
 .progress { position: absolute; inset-inline-start: 0; bottom: 0; height: 2px; width: 100%; background: var(--signal); transform-origin: 0 50%; transform: scaleX(0); }
 @supports (animation-timeline: scroll()) {
@@ -380,8 +379,6 @@ h4 { font: 500 17px var(--display); color: var(--ink); margin: 0 0 8px; letter-s
   .certs { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
-  .hero { align-items: flex-start; }
-  .hero-copy { padding-top: 120px; }
   .hero::after { height: 6%; }
   .skills, .certs, .capabilities, .approach { grid-template-columns: 1fr; }
   .project .face, .project.featured .face { padding: 22px; }
@@ -427,3 +424,40 @@ section.stats.wrap { padding-block: 0; margin-top: 8px; }
 @media (prefers-reduced-motion: no-preference) { .tool:active { transform: scale(.95); } }
 .nav-right { display: flex; align-items: center; }
 
+
+/* sections stop below the floating menu bar when you jump to them */
+section[id] { scroll-margin-top: 96px; }
+
+/* tablets and phones: the robot gets its own space above the text instead of sitting behind it */
+@media (max-width: 900px) {
+  .hero { flex-direction: column; align-items: stretch; min-height: 0; padding-top: 112px; }
+  .neural { position: relative; inset: auto; height: clamp(240px, 62vw, 340px); flex: none; }
+  .hero-copy { padding-top: 0; }
+  .aurora::before { width: 90vw; height: 90vw; right: -20vw; top: 40px; }
+  .aurora::after { width: 70vw; height: 70vw; right: 30vw; bottom: 10%; }
+}
+
+/* phones: menu links move to a swipeable row under the bar */
+@media (max-width: 720px) {
+  .nav { flex-wrap: wrap; row-gap: 6px; padding: 8px 10px 8px 16px; }
+  .nav-right { display: contents; }
+  .nav-tools { order: 2; margin-inline-start: auto; border-inline-start: 0; padding-inline-start: 0; }
+  .nav nav {
+    order: 3; width: 100%; overflow-x: auto; scrollbar-width: none;
+    border-top: 1px solid var(--line); padding-top: 6px;
+    -webkit-mask: linear-gradient(90deg, #000 85%, transparent); mask: linear-gradient(90deg, #000 85%, transparent);
+  }
+  [dir="rtl"] .nav nav { -webkit-mask: linear-gradient(270deg, #000 85%, transparent); mask: linear-gradient(270deg, #000 85%, transparent); }
+  .nav nav::-webkit-scrollbar { display: none; }
+  .nav nav a { flex: none; font-size: 13.5px; padding: 6px 10px; }
+  .hero { padding-top: 132px; }
+  section[id] { scroll-margin-top: 124px; }
+  h1 { font-size: clamp(48px, 15vw, 72px); }
+  .hero-actions { margin-top: 26px; }
+  .hero-actions .btn { flex: 1 1 auto; }
+  .stat { padding: 18px; }
+  .stat > span { font-size: 32px; }
+  .contact-links .btn { flex: 1 1 100%; }
+  .edu { padding: 22px; }
+  .gpa span { font-size: 30px; }
+}

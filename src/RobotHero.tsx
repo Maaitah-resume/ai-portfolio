@@ -168,8 +168,9 @@ export default function RobotHero({ rtl = false }: { rtl?: boolean }) {
       // Beside the headline on wide screens (on its far side in right-to-left pages); below it on phones.
       const wide = w > 900
       targetX = wide ? 2.6 * (rtlRef.current ? -1 : 1) : 0
-      robot.position.y = wide ? -0.2 : -1.9
-      robot.scale.setScalar(wide ? 1 : 0.62)
+      // on narrow screens the canvas is a short strip of its own, so the robot sits centred in it
+      robot.position.y = wide ? -0.2 : -0.05
+      robot.scale.setScalar(wide ? 1 : 1.08)
       camera.updateProjectionMatrix()
     }
 
@@ -235,7 +236,7 @@ export default function RobotHero({ rtl = false }: { rtl?: boolean }) {
 
       renderer.render(scene, camera)
     }
-    const baseY = () => (host.clientWidth > 900 ? -0.2 : -1.9)
+    const baseY = () => (host.clientWidth > 900 ? -0.2 : -0.05)
 
     let visible = true
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting))
