@@ -2,7 +2,8 @@
 
 Personal portfolio: generative AI, RAG systems, multi-agent automation and deep learning.
 
-**Live site:** https://mohammad-maaitah-portfolio.vercel.app
+**Live site:** https://maaitah-resume.github.io/ai-portfolio/
+(also on Vercel: https://mohammad-maaitah-portfolio.vercel.app)
 
 ## Features
 
@@ -20,6 +21,10 @@ npm run dev
 ```
 
 ## Deploy
+
+Every push to `main` publishes to GitHub Pages automatically (`.github/workflows/pages.yml`).
+
+To update the Vercel copy:
 
 ```bash
 npx vercel@latest deploy --prod
